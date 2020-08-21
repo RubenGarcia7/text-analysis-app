@@ -41,7 +41,7 @@ app.listen(PORT, function (err) {
         console.log('there was a problem', err)
         return
     }
-    console.log(`App working and listening on ${PORT}, and your API key is ${process.env.API_KEY}`)
+    console.log(`App working and listening on ${PORT}`)
 })
 
 app.get('/test', function (req, res) {
