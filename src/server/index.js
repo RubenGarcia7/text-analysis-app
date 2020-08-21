@@ -6,9 +6,6 @@ const fetch = require('node-fetch')
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Setup empty JS object to act as endpoint for all routes
-const appData = {}
-entry = 0;
 
 const PORT = process.env.PORT || 8081
 
@@ -49,37 +46,7 @@ app.get('/test', function (req, res) {
     res.send('Hello')
 })
 
-//Post route
-// app.post('/sendInfo', addInfo)
-
-// function addInfo(req, res) {
-//     console.log(req.body)
-//     const data = req.body
-
-//     newEntry = {
-//         agreement: data.agreement,
-//         confidence: data.confidence,
-//         irony: data.irony,
-//         score: data.score,
-//         text: data.text
-//     }
-
-//     appData[entry] = newEntry;
-
-//     res.send({
-//         message: "POST request is successful"
-//     })
-// }
-
-// Initialize all route with a callback function
-// app.get('/all', sendAppData)
-
-// // Callback function to complete GET '/all'
-// function sendAppData(req, res) {
-//     res.send(appData)
-// }
-
-// Variables
+// API Variables
 const key = process.env.API_KEY;
 const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 const model = 'general';
