@@ -1,6 +1,7 @@
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const fetch = require('node-fetch')
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -49,35 +50,51 @@ app.get('/test', function (req, res) {
 })
 
 //Post route
-app.post('/sendInfo', addInfo)
+// app.post('/sendInfo', addInfo)
 
-function addInfo(req, res) {
-    console.log(req.body)
-    const data = req.body
+// function addInfo(req, res) {
+//     console.log(req.body)
+//     const data = req.body
 
-    newEntry = {
-        agreement: data.agreement,
-        confidence: data.confidence,
-        irony: data.irony,
-        score: data.score,
-        text: data.text
-    }
+//     newEntry = {
+//         agreement: data.agreement,
+//         confidence: data.confidence,
+//         irony: data.irony,
+//         score: data.score,
+//         text: data.text
+//     }
 
-    appData[entry] = newEntry;
+//     appData[entry] = newEntry;
 
-    res.send({
-        message: "POST request is successful"
-    })
-}
+//     res.send({
+//         message: "POST request is successful"
+//     })
+// }
 
 // Initialize all route with a callback function
-app.get('/all', sendAppData)
+// app.get('/all', sendAppData)
 
-// Callback function to complete GET '/all'
-function sendAppData(req, res) {
-    res.send(appData)
-}
+// // Callback function to complete GET '/all'
+// function sendAppData(req, res) {
+//     res.send(appData)
+// }
 
-app.get('/analyse', (req, res) => {
-    
+// Variables
+const key = process.env.API_KEY;
+const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
+const model = 'general';
+const language = 'en';
+
+app.get('/analyse/:text', (req, res) => {
+    const userText = req.params.text;
+    console.log(userText)
+    fetch(`${baseURL}?key=${key}&of=json&txt=${userText}.&model=${model}&lang=${language}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        res.send(data)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 })
