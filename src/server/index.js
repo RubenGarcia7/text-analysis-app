@@ -9,7 +9,7 @@ dotenv.config();
 const appData = {}
 entry = 0;
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8081
 
 //Set up environment variables
 
@@ -77,3 +77,7 @@ app.get('/all', sendAppData)
 function sendAppData(req, res) {
     res.send(appData)
 }
+
+app.get('/analyse', (req, res) => {
+    
+})

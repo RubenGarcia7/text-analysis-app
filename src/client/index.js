@@ -1,7 +1,9 @@
 // import { checkForName } from './js/nameChecker'
 // import { handleSubmit } from './js/formHandler'
 
-import './styles/main.scss'
+require('dotenv').config();
+
+import './styles/main.scss';
 
 // APP JS Code to import later
 
@@ -33,7 +35,7 @@ function performAction(e) {
   getTextData(baseURL, key, userText, model, language)
 
     .then(data => {
-      postData('http://localhost:8080/sendInfo', {
+      postData('http://localhost:8081/sendInfo', {
         agreement: data.agreement,
         confidence: data.confidence,
         irony: data.confidence,
@@ -84,7 +86,7 @@ const postData = async (url = '', data = {}) => {
 /* Get the project data and update the UI */
 const updateUI = async () => {
 
-  const request = await fetch('http://localhost:8080/all');
+  const request = await fetch('http://localhost:8081/all');
 
   try {
     const allData = await request.json();

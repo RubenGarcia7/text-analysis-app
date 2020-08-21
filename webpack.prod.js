@@ -8,6 +8,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
+    output: {
+        filename: 'main.[contentHash].js',
+        path: path.resolve(__dirname, 'dist')
+    },
     mode: 'production',
     devtool: 'source-map',
     stats: 'verbose',
@@ -40,7 +44,8 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
+        }),
+        new Dotenv()
     ],
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
