@@ -7,6 +7,34 @@
   --color-white: #fff;
 }
 
+// Media Queries Manager
+// 1em = 16px
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media (max-width: 37.5em) {
+      @content
+    } ; // 600px
+  }
+
+  @if $breakpoint==tab-port {
+    @media (max-width: 56.25em) {
+      @content
+    } ; // 900px
+  }
+
+  @if $breakpoint==tab-land {
+    @media (max-width: 75em) {
+      @content
+    } ; // 1200px
+  }
+
+  @if $breakpoint==big-desktop {
+    @media (min-width: 112.5em) {
+      @content
+    } ; // 1800px
+  }
+}
+
 // Base Styles
 *,
 *::before,
@@ -26,14 +54,14 @@ body {
 html {
   font-size: 62.5%;
 
-  // Transition Class
-  &.transition,
-  &.transition *,
-  &.transition *:before,
-  &.transition *:after {
-    transition: all .5s !important;
-    transition-delay: 0 !important;
+  @include respond(tab-port) {
+    font-size: 56.25%;
   }
+
+  @include respond(phone) {
+    font-size: 50%;
+  }
+
 }
 
 ul {
@@ -114,6 +142,7 @@ h6 {
 
 h1 {
   font-size: 4.5rem;
+
 }
 
 h2 {
@@ -223,6 +252,9 @@ p {
     &__heading {
       font-size: 5.4rem;
       text-transform: capitalize;
+      @include respond(phone) {
+        font-size: 3.5rem;
+      }
     }
 
     &__subheading {
@@ -234,13 +266,21 @@ p {
       &-textarea {
         padding: 2rem;
         font-size: 1.8rem;
-        width: 90rem;
+        width: 85rem;
         display: block;
         margin: 0 auto;
         margin-top: 3.5rem;
         margin-bottom: 2.5rem;
         border-radius: 1rem;
         overflow: hidden;
+
+        @include respond(tab-port) {
+          width: 90%;
+        }
+
+        @include respond(phone) {
+          width: 100%;
+        }
       }
     }
   }
@@ -252,11 +292,10 @@ p {
     margin-bottom: 10rem;
 
     .report-area {
-      flex-basis: 65%;
+      width: 100%;
       background: var(--color-white);
       padding: 3.5rem;
       border-radius: 1rem;
-      margin-right: 3rem;
 
       &__heading,
       &__value {
@@ -272,17 +311,21 @@ p {
       }
     }
 
-    .userText-area {
-      flex-basis: 35%;
-      background: var(--color-white);
-      padding: 3.5rem;
-      border-radius: 1rem;
+    // .userText-area {
+    //   flex-basis: 35%;
+    //   background: var(--color-white);
+    //   padding: 3.5rem;
+    //   border-radius: 1rem;
 
-      &__heading,
-      &__text {
-        color: #333;
-      }
+    //   &__heading,
+    //   &__text {
+    //     color: #333;
+    //   }
 
-    }
+    //   &__text {
+    //     word-break: break-all;
+    //   }
+
+    // }
   }
 }
