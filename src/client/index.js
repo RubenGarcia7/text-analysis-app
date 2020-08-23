@@ -1,7 +1,12 @@
-// import { checkForName } from './js/nameChecker'
-// import { handleSubmit } from './js/formHandler'
+import { performAction } from './js/formHandler'
+import { formValidator } from './js/formChecker'
 
 import './styles/main.scss';
 
-import { performAction } from './js/app'
+// import { performAction } from './js/app'
+
+export {
+  performAction,
+  formValidator
+}
 

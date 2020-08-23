@@ -8,7 +8,9 @@ module.exports = {
     entry: './src/client/index.js',
     output: {
         filename: 'main.[contentHash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'var',
+        library: 'Client'
     },
     mode: 'development',
     devtool: 'source-map',

@@ -16,10 +16,13 @@
     <header class="hero-section">
         <div class="hero main-container">
             <h1 class="hero__heading">Analyse text in an instant</h1>
-            <p class="hero__subheading">Simply type or paste your text below and let our app take charge of the rest. Please note the maximum number of characters is 5000</p>
-            <form action="" method="POST" id="form" class="hero__form">
-                <textarea name="" id="textarea" rows="10" class="hero__form-textarea shadow-s"></textarea>
-                <button class="btn-primary btn shadow-xxs">Analyse</button>
+            <p class="hero__subheading">Simply type or paste your text below and let our app take charge of the rest.
+                Please note the maximum number of characters is 5000</p>
+            <form id="form" class="hero__form" onsubmit="return Client.performAction(e)">
+                <textarea name="input" id="textarea" rows="10"
+                    class="hero__form-textarea shadow-s"></textarea>
+                <input type="submit" name="" class="btn-primary btn shadow-xxs" value="Analyse"
+                    onclick="return Client.performAction(e)" onsubmit="return Client.performAction(e)">
             </form>
         </div>
         <div class="dashboard main-container">
@@ -94,6 +97,17 @@
     <!-- <footer>
         <p>This is a footer</p>
     </footer> -->
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then(registration =>{
+                    console.log('SW registered: ', registration);
+                });
+            });
+        }
+    </script>
 
 </body>
 

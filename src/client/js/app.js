@@ -9,7 +9,7 @@ const confidenceField = document.getElementById('confidence');
 const agreementField = document.getElementById('agreement');
 const ironyField = document.getElementById('irony');
 
-form.addEventListener('submit', performAction);
+// form.addEventListener('submit', performAction);
 
 export function performAction(e) {
   e.preventDefault();
