@@ -6,17 +6,15 @@ const ironyField = document.getElementById('irony');
 
 // form.addEventListener('submit', performAction);
 
-export function performAction(e) {
-  e.preventDefault();
+export function performAction(event) {
+  event.preventDefault();
 
   const userText = textarea.value;
 
   Client.formValidator(userText);
 
-  console.log('Success!');
-
   getTextData(userText);
-  
+
 }
 
 // Fetch text data from API

@@ -1,4 +1,4 @@
-import { performAction } from '../app';
+import { getTextData } from '../formHandler';
 
 describe("Testing the submit functionality", () => {
   // The test() function has two arguments - a string description, and an actual test as a callback function.  
@@ -7,6 +7,7 @@ describe("Testing the submit functionality", () => {
     // Define the expected output, if any, in the form of variables/array
     // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
     // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-    expect(handleSubmit).toBeDefined();
+  
+    expect(getTextData('This is some random text')).toBe(true);
   })
 });

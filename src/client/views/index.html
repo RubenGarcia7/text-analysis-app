@@ -18,11 +18,11 @@
             <h1 class="hero__heading">Analyse text in an instant</h1>
             <p class="hero__subheading">Simply type or paste your text below and let our app take charge of the rest.
                 Please note the maximum number of characters is 5000</p>
-            <form id="form" class="hero__form" onsubmit="return Client.performAction(e)">
+            <form id="form" class="hero__form" onsubmit="return Client.performAction(event)">
                 <textarea name="input" id="textarea" rows="10"
                     class="hero__form-textarea shadow-s"></textarea>
                 <input type="submit" name="" class="btn-primary btn shadow-xxs" value="Analyse"
-                    onclick="return Client.performAction(e)" onsubmit="return Client.performAction(e)">
+                    onclick="return Client.performAction(event)" onsubmit="return Client.performAction(event)">
             </form>
         </div>
         <div class="dashboard main-container">
