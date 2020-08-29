@@ -17,9 +17,10 @@ export function performAction(event) {
 
 }
 
+
 // Fetch text data from API
 
-const getTextData = async (userText) => {
+export const getTextData = async (userText) => {
 
   try {
     const res = await fetch(`http://localhost:8081/analyse/${userText}`);
@@ -32,7 +33,7 @@ const getTextData = async (userText) => {
   }
 }
 
-function updateUI(data, userText) {
+export function updateUI(data, userText) {
 
   let score = data.score_tag;
   let confidence = data.confidence;
