@@ -23,7 +23,7 @@ export function performAction(event) {
 export const getTextData = async (userText) => {
 
   try {
-    const res = await fetch(`http://localhost:8081/analyse/${userText}`);
+    const res = await fetch(`/analyse/${userText}`);
     const data = await res.json();
     console.log(data);
     updateUI(data, userText);
