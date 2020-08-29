@@ -11,8 +11,10 @@ const PORT = process.env.PORT || 8081
 
 const app = express()
 
+/* Main Directory */
 app.use(express.static('dist'))
 
+/* Index Route */
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
@@ -20,8 +22,7 @@ app.get('/', function (req, res) {
 /* Dependencies */
 const bodyParser = require('body-parser')
 
-/* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
+/* Middleware */
 app.use(bodyParser.urlencoded({
     extended: false
 }))
@@ -31,7 +32,7 @@ app.use(bodyParser.json())
 const cors = require('cors')
 app.use(cors())
 
-// designates what port the app will listen to for incoming requests
+// Designates what port the app will listen to for incoming requests
 app.listen(PORT, function (err) {
     if (err) {
         console.log('there was a problem', err)
@@ -40,6 +41,7 @@ app.listen(PORT, function (err) {
     console.log(`App working and listening on ${PORT}`)
 })
 
+/* Test Route */
 app.get('/test', function (req, res) {
     res.send('Hello')
 })
@@ -50,6 +52,7 @@ const baseURL = 'https://api.meaningcloud.com/sentiment-2.1';
 const model = 'general';
 const language = 'en';
 
+/* API Get Call Route */
 app.get('/analyse/:text', (req, res) => {
     const userText = req.params.text;
     console.log(userText)
