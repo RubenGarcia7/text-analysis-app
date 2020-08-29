@@ -4,7 +4,6 @@ const confidenceField = document.getElementById('confidence');
 const agreementField = document.getElementById('agreement');
 const ironyField = document.getElementById('irony');
 
-// form.addEventListener('submit', performAction);
 
 export function performAction(event) {
   event.preventDefault();
@@ -17,9 +16,7 @@ export function performAction(event) {
 
 }
 
-
 // Fetch text data from API
-
 export const getTextData = async (userText) => {
 
   try {
@@ -85,20 +82,3 @@ export function updateUI(data, userText) {
   agreementField.innerHTML = agreement;
   ironyField.innerHTML = irony;
 }
-
-// function handleSubmit(event) {
-//     event.preventDefault()
-
-//     // check what text was put into the form field
-//     let formText = document.getElementById('name').value
-//     checkForName(formText)
-
-//     console.log("::: Form Submitted :::")
-//     fetch('http://localhost:8080/test')
-//     .then(res => res.json())
-//     .then(function(res) {
-//         document.getElementById('results').innerHTML = res.message
-//     })
-// }
-
-// export { handleSubmit }
